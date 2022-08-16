@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-rest-research
+spec:
+  selector:
+    matchLabels:
+      app: python-rest-research
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: python-rest-research
+    spec:
+      containers:
+        - name: python-rest-research
+          image: python-rest-research
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000

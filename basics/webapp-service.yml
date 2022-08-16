@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: webapp-service
+spec:
+  # This defines which pods are going to be represented by this Service
+  selector:
+    app: webapp
+  ports:
+    - name: http
+      port: 80
+      nodePort: 30080 # allow greater than 3000
+  type: NodePort # ClusterIP - accessible from inside a cluster (not external)

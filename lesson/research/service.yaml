@@ -1,0 +1,36 @@
+#-----service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-research
+spec:
+  selector:
+    app: kubernetes-research
+  ports:
+    - protocol: "TCP"
+      port: 8080
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-rest
+spec:
+  selector:
+    app: python-rest-research
+  ports:
+    - port: 5000
+  type: LoadBalancer

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: grafana-replicaset
+  name: grafana-replicaset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana-replicaset  
+  template: # template for the pods
+    metadata:
+      name: grafana-replicaset
+      labels:
+        app: grafana-replicaset
+    spec:
+      containers:
+      - name: grafana-replicaset
+        image: "grafana/grafana-enterprise"
+        ports:
+          - containerPort: 3000

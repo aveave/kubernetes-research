@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: global-config-v1
+  namespace: default
+data:
+  SERVICE_URL: "http://127.0.0.1:8080/api/person"
+  USERNAME_LOGIN: "PLAIN_LOGIN"
