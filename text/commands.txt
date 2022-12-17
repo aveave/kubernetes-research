@@ -1,0 +1,92 @@
+kops update cluster ${NAME} --yes  --admin=87600h
+
+kops export kubecfg --admin=87600h
+
+kops validate cluster
+
+lubectl get nodes
+
+
+
+
+-- delete a cluster
+
+history | grep STATE
+
+export KOPS_STATE_STORE=s3://aveave-storage
+export NAME=fleetman.k8s.local
+
+! number of line
+
+kops delete cluster ${NAME} --yes
+
+-- create cluster kops create cluster --zones=eu-east-2a --name=${NAME}
+
+kops edit ig --name=fleetman.k8s.local nodes
+
+kops update cluster $NAME} --yes
+
+kops validate cluster
+
+
+--restart cluster 
+
+export KOPS_STATE_STORE = s3://aveave-storage
+export NAME = fleetman.k8s.local
+
+kops create cluster --name=fleetman.k8s.local --state=s3://aveave-storage --zones=us-east-2a, us-east-2b, us-east-2c
+kops update cluster ${NAME} --yes  --admin=87600h
+
+kops export kubecfg --admin=87600h
+kops validate cluster
+
+-- info
+
+kubectl get all calls loadbalancer
+
+kubectl -> master node -> worker nodes
+
+get wide info kubectl get pods -o wide
+
+kubectl get po -n kube-system
+
+
+
+## ingress
+kubectl describe ing test-ingress
+
+kubectl get svc -n ingress-nginx
+
+kubectl get nodes -o wide
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+
+kubectl delete deployment.apps/ingress-nginx-controller --namespace=ingress-nginx
+
+
+
+ingress setup
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+
+kubectl get pods --namespace=ingress-nginx
+
+kubectl get service ingress-nginx-controller --namespace=ingress-nginx
+
+kubectl create ingress demo --class=nginx --rule="www.test.io/*=demo:80"
+
+
+
+delete validation 
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+
+
+
+
+istio
+
+install instio locally
+
+run command istioctl install
+
+kubectl label namespace default istio-injection=enabled
